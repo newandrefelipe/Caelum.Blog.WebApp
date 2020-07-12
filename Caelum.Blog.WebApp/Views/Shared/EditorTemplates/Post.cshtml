@@ -1,0 +1,23 @@
+﻿@model Post
+
+<input type="hidden" asp-for="Id" />
+<input type="hidden" asp-for="DataPublicacao" />
+<input type="hidden" asp-for="Publicado" />
+
+<div class="form-group">
+    <label asp-for="Titulo"></label>
+    <input class="form-control" asp-for="Titulo" />
+    <span class="text-danger" asp-validation-for="Titulo"></span>
+</div>
+
+<div class="form-group">
+    <label asp-for="Resumo"></label>
+    <textarea class="form-control" asp-for="Resumo" rows="5" ></textarea>
+    <span class="text-danger" asp-validation-for="Resumo"></span>
+</div>
+
+<div class="form-group">
+    <label asp-for="Categoria"></label>
+    <input class="form-control" asp-for="Categoria" autocomplete="off" />
+    <span class="text-danger" asp-validation-for="Categoria"></span>
+</div>

@@ -1,0 +1,27 @@
+﻿@using System.Security.Claims;
+
+<aside class="bg-dark text-white p-3">
+    <h1>Administração</h1>
+    @if (ViewContext.HttpContext.User.Identity.IsAuthenticated)
+    {
+            
+        IEnumerable<Claim> direitos = ViewContext.HttpContext.User.Claims;
+
+        Claim loginClaim = direitos
+            .FirstOrDefault(c => c.Type == "Login");
+
+        string usuario = loginClaim.Value;
+
+        <div>
+            <p>Bem vindo, @usuario!</p>
+            <form asp-action="Logout" asp-controller="Usuarios">
+                <button class="btn-sm btn-outline-info">Logout</button>
+            </form>
+        </div>
+    }
+    <ul>
+        <li>
+            <a asp-action="Index" asp-controller="Posts">Posts</a>
+        </li>
+    </ul>
+</aside>

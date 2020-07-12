@@ -1,0 +1,18 @@
+﻿@model IEnumerable<Post>
+
+@{
+    ViewData["Title"] = "Resenha Cultural - Blog";
+}
+
+@foreach (var post in Model)
+{
+    <article class="card mb-3">
+        <div class="card-body">
+            <h2>@post.Titulo</h2>
+            <p>@post.Resumo</p>
+        </div>
+        <div class="card-footer bg-light">
+            <small>Publicado em @post.DataPublicacao.Value.ToString("dd/MM/yyyy") por @post.Autor?.Nome em @post.Categoria</small>
+        </div>
+    </article>
+}

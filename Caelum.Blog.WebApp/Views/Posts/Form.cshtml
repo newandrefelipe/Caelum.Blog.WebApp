@@ -1,0 +1,30 @@
+﻿@model Post
+
+@{ 
+    Layout = "_LayoutAdmin";
+}
+
+<form asp-action="@ViewContext.RouteData.Values["action"]">
+
+    @Html.EditorForModel()
+
+    <button class="btn btn-primary">Gravar</button>
+</form>
+
+@section Scripts
+{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script src="~/lib/jqueryui/dist/jquery-ui.js"></script>
+    <script>
+    $("input[name='Categoria']").autocomplete({
+        source: '@Url.ActionLink("CategoriaAutocomplete", "Posts")',
+        minLength: 3
+    });
+    </script>
+}
+
+@section Styles 
+{
+    <link href="~/lib/jqueryui/dist/jquery-ui.css" rel="stylesheet" />
+}

@@ -1,0 +1,39 @@
+﻿@model LoginViewModel
+
+@{
+    Layout = "";
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Login - Admin Blog</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/lib/font-awesome/dist/css/all.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body class="d-flex align-items-center min-vh-100">
+    <div class="card col-4 offset-4 p-0">
+        <div class="card-header">
+            <h3>Login</h3>
+        </div>
+        <div class="card-body">
+            <form role="form" asp-action="Login">
+                <div class="form-group">
+                    <label asp-for="Usuario"></label>
+                    <input class="form-control" asp-for="Usuario" autofocus />
+                    <span class="text-danger" asp-validation-for="Usuario"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Senha"></label>
+                    <input class="form-control" asp-for="Senha" />
+                    <span class="text-danger" asp-validation-for="Senha"></span>
+                </div>
+                <button class="btn btn-primary">Entrar</button>
+            </form>
+        </div>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+</body>
+</html>

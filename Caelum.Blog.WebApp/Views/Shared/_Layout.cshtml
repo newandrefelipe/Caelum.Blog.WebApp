@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Caelum.Blog.WebApp</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="~/lib/font-awesome/dist/css/all.css" rel="stylesheet" />
+    @RenderSection("Styles", required: false)
+</head>
+<body>
+
+    <partial name="_Cabecalho" />
+    
+    <main role="main" class="container">
+        <div class="row">
+            <div class="col-8">
+                @RenderBody()
+            </div>
+            <aside class="col-4 bg-info p-3">
+                <partial name="_Busca" />
+            </aside>
+        </div>
+        
+    </main>
+
+    <partial name="_Rodape" />
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

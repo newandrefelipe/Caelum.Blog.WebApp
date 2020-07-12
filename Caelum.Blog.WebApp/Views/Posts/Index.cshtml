@@ -1,0 +1,49 @@
+﻿@model IList<Post>
+
+@{ 
+    Layout = "_LayoutAdmin";
+}
+
+<h1>Lista de posts</h1>
+
+<a class="btn btn-outline-primary mb-3" asp-action="Novo" asp-controller="Posts">Novo Post</a>
+
+<table class="table table-hover table-striped">
+    <tr>
+        <th>Titulo</th>
+        <th>Resumo </th>
+        <th>Publicado?</th>
+        <th>Categoria</th>
+        <th>Ações</th>
+    </tr>
+    @foreach (Post post in Model)
+    {
+        <tr>
+            <td>@post.Titulo</td>
+            <td>@post.Resumo</td>
+            <td>
+                @if (post.DataPublicacao.HasValue)
+                {
+                    <span>@post.DataPublicacao.Value.ToString("dd/MM/yyyy")</span>
+                } else
+                {
+                    <a asp-action="Publicar" asp-controller="Posts" asp-route-id="@post.Id">Publicar</a>
+                }
+            </td>
+            <td>
+                <a asp-action="Categoria" asp-controller="Posts" asp-route-categoria="@post.Categoria">@post.Categoria</a>
+            </td>
+            <td>
+                <!-- essa rota é gerada para o controlador que está definido pela view -->
+                <a asp-action="Editar" asp-route-id="@post.Id">
+                    <i class="fas fa-edit"></i>
+                </a>
+
+                <!-- essa rota é gerada para o controlador que está definido explicitamente no tag helper -->
+                <a asp-action="Excluir" asp-controller="Posts" asp-route-id="@post.Id">
+                    <i class="fas fa-trash"></i>
+                </a>
+            </td>
+        </tr>
+    }
+</table>
